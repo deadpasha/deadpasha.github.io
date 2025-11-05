@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мертвый Паша</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Tahoma", "Arial", sans-serif;
+            background: linear-gradient(to bottom, #000000 0%, #1a1a1a 10%, #333333 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            width: 700px;
+            background: #2a2a2a;
+            border: 1px solid #666;
+            padding: 0;
+            box-shadow: 2px 2px 10px rgba(255,255,255,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(to bottom, #555555 0%, #333333 100%);
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 1px solid #444;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        h1 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin: 0 0 20px 0;
+        }
+        
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 15px 0;
+            color: #ccc;
+        }
+        
+        .password-input {
+            width: 200px;
+            padding: 8px;
+            font-size: 13px;
+            font-family: "Tahoma", sans-serif;
+            background: #1a1a1a;
+            border: 1px solid #888;
+            border-top: 1px solid #666;
+            border-left: 1px solid #666;
+            color: #fff;
+            margin: 10px 0;
+        }
+        
+        .password-input:focus {
+            outline: 1px solid #777;
+        }
+        
+        .button-xp {
+            background: linear-gradient(to bottom, #666666 0%, #555555 50%, #444444 51%, #777777 100%);
+            color: #fff;
+            border: 1px solid #888;
+            border-top: 1px solid #999;
+            border-left: 1px solid #999;
+            padding: 6px 25px;
+            font-size: 13px;
+            font-family: "Tahoma", sans-serif;
+            cursor: pointer;
+            border-radius: 3px;
+            outline: 1px solid #555;
+            margin-left: 10px;
+        }
+        
+        .button-xp:hover {
+            background: linear-gradient(to bottom, #777777 0%, #666666 50%, #555555 51%, #888888 100%);
+            outline: 1px solid #666;
+        }
+        
+        .button-xp:active {
+            background: linear-gradient(to bottom, #555555 0%, #444444 50%, #666666 51%, #777777 100%);
+            border: 1px solid #777;
+            border-top: 1px solid #555;
+            border-left: 1px solid #555;
+            outline: 1px solid #444;
+        }
+        
+        .button-container {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        .password-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .error-message {
+            color: #ff6666;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Мертвый Паша</div>
+        <div class="content">
+            <h1>Введите пароль</h1>
+            <p>Для доступа к сайту введите пароль. Сайт посвящен природному явлению "Мертвый Паша" - уникальному метеорологическому феномену, характеризующемуся периодом полного штиля и безветрия.</p>
+            
+            <div class="password-form">
+                <input type="password" class="password-input" id="password" placeholder="Введите пароль">
+                <button class="button-xp" onclick="checkPassword()">Войти</button>
+            </div>
+            <div class="error-message" id="error">Неверный пароль!</div>
+            
+            <div class="button-container" style="display: none;" id="mainContent">
+                <h1>Добро пожаловать</h1>
+                <p>Добро пожаловать на сайт, посвященный природному явлению "Мертвый Паша". Это уникальный метеорологический феномен, характеризующийся периодом полного штиля и безветрия. Исследуйте с нами это удивительное природное явление.</p>
+                <p>Сайт предоставляет полную информацию о данном феномене, включая исторические данные, научные исследования и практические наблюдения. Все материалы систематизированы и доступны для изучения.</p>
+                <button class="button-xp" onclick="redirectToSite()">Продолжить</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('error');
+            const mainContent = document.getElementById('mainContent');
+            const passwordForm = document.querySelector('.password-form');
+            const title = document.querySelector('h1');
+            const description = document.querySelector('p');
+            
+            if (password === 'pasha7') {
+                passwordForm.style.display = 'none';
+                error.style.display = 'none';
+                mainContent.style.display = 'block';
+                title.style.display = 'none';
+                description.style.display = 'none';
+            } else {
+                error.style.display = 'block';
+            }
+        }
+        
+        function redirectToSite() {
+            window.location.href = 'https://deadpasha.github.io/zjwmfi';
+        }
+        
+        // Добавляем возможность нажимать Enter для ввода пароля
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
